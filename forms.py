@@ -50,7 +50,7 @@ class GlucoseLogForm(FlaskForm):
         'Blood Glucose Level (mg/dL)', 
         validators=[
             DataRequired(),  # Field is required
-            NumberRange(min=0.1, max=600)  # Validates the range of acceptable values
+            NumberRange(min=0.1, max=35.0)  # Validates the range of acceptable values
         ]
     )
     submit = SubmitField('Log Glucose')  # Submit button
