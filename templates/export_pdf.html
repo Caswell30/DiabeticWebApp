@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Glucose Logs</title>
+</head>
+<body>
+    <h1>Blood Glucose Logs</h1>
+    <h2>User: {{ current_user.email }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Glucose Level (mg/dL)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if logs %}
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.timestamp.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ log.timestamp.strftime('%H:%M') }}</td>
+                    <td>{{ log.glucose_level }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">No blood glucose logs available.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <footer>
+        <p>Generated on {{ current_time.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    </footer>
+</body>
+</html>
